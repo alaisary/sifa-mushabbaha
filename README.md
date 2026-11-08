@@ -21,3 +21,4 @@ npx wrangler pages deploy dist --project-name sifa-mushabbaha
 ## Folders
 
 - `slides/sifa-mushabbaha` — the deck source
+- `slides/sifa-mushabbaha-nashat` — نشاط ختامي تفاعلي (click to reveal answers), at `/s/sifa-mushabbaha-nashat`

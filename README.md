@@ -22,3 +22,5 @@ npx wrangler pages deploy dist --project-name sifa-mushabbaha
 
 - `slides/sifa-mushabbaha` — the deck source
 - `slides/sifa-mushabbaha-nashat` — نشاط ختامي تفاعلي (click to reveal answers), at `/s/sifa-mushabbaha-nashat`
+- `slides/sifa-mushabbaha-qussi` — ورقة نشاط «اقصّي واكتبي» (ورقتان، ١٢ شريطًا): استخراج الصفة المشبهة ووزنها، at `/s/sifa-mushabbaha-qussi`
+- `slides/sifa-mushabbaha-qussi-taalimat` — شريحة تعليمات النشاط مع مؤقت ٣ دقائق، at `/s/sifa-mushabbaha-qussi-taalimat`

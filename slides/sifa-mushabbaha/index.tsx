@@ -36,6 +36,12 @@ const css = `
 @keyframes sm-in { 0% { transform: scale(.92); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
 .sm-bob { animation: sm-bob 5s ease-in-out infinite; }
 .sm-pop { animation: sm-pop .28s cubic-bezier(.22,1,.36,1) both; }
+@keyframes sm-spark { 0% { transform: translate(-50%,-50%) rotate(var(--a)) translateY(0) scale(.4); opacity: 1 }
+  100% { transform: translate(-50%,-50%) rotate(var(--a)) translateY(-46px) scale(1); opacity: 0 } }
+.sm-spark { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-radius: 50%;
+  pointer-events: none; animation: sm-spark .6s cubic-bezier(.22,1,.36,1) both; }
+[data-still] .sm-spark { display: none; }
+@media (prefers-reduced-motion: reduce) { .sm-spark { display: none; } }
 .sm-in { animation: sm-in .3s cubic-bezier(.22,1,.36,1) both; }
 .sm-btn { cursor: pointer; transition: filter .15s, transform .1s; }
 .sm-btn:hover { filter: brightness(1.07); }
@@ -234,13 +240,10 @@ function W({ id, children, wazn }: { id: string; children: ReactNode; wazn: stri
   const on = shown.has(id);
   return (
     <span
-      data-osd-interactive
-      role="button"
-      onClick={(e) => { e.stopPropagation(); toggle(id); }}
+      onClick={() => toggle(id)}
       style={{
         position: 'relative',
         display: 'inline-block',
-        cursor: 'pointer',
         padding: '0 6px',
         borderRadius: 12,
         background: on ? 'rgba(179,18,46,.12)' : 'transparent',
@@ -251,6 +254,7 @@ function W({ id, children, wazn }: { id: string; children: ReactNode; wazn: stri
       }}
     >
       {children}
+      {on && <Burst />}
       {on && (
         <span
           className="sm-pop"
@@ -275,6 +279,21 @@ function W({ id, children, wazn }: { id: string; children: ReactNode; wazn: stri
     </span>
   );
 }
+
+// Tiny celebration: six dots in the Omani colours flick outward once when a word is found.
+const Spark = ({ a, c }: { a: number; c: string }) => (
+  <span className="sm-spark" style={{ ['--a' as string]: `${a}deg`, background: c }} />
+);
+const Burst = () => (
+  <span aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+    <Spark a={0} c={C.red} />
+    <Spark a={60} c={C.green} />
+    <Spark a={120} c={C.red} />
+    <Spark a={180} c={C.green} />
+    <Spark a={240} c={C.red} />
+    <Spark a={300} c={C.green} />
+  </span>
+);
 
 const ALL = ['faqiha', 'zama', 'fatina', 'razina', 'samh', 'hasan', 'shuja', 'bayda', 'hulwa', 'tayyib'];
 
@@ -301,7 +320,11 @@ const Paragraph: Page = () => {
             </span>
           </div>
           <div
+            data-osd-interactive
+            onClick={(e) => e.stopPropagation()}
             style={{
+              cursor: 'default',
+              userSelect: 'none',
               marginTop: 26,
               background: C.card,
               border: `3px solid ${C.edge}`,
@@ -315,13 +338,13 @@ const Paragraph: Page = () => {
             }}
           >
             عاشت عائشة بنت راشد الريامية بين القرنين الحادي عشر والثاني عشر الهجريين، وكانت{' '}
-            <W id="faqiha" wazn="فَعِيلَة">فَقِيهَةً</W> تُسأل فتُفتي. كانت <W id="zama" wazn="فَعْلَى">ظَمْأَى</W>{' '}
-            إلى العلم لا ترتوي منه، <W id="fatina" wazn="فَعِلَة">فَطِنَةً</W> في فهم المسائل،{' '}
-            <W id="razina" wazn="فَعِيلَة">رَزِينَةَ</W> الرأي إذا حكمت. وقفت مكتبتها على طلبة العلم، فكانت{' '}
-            <W id="samh" wazn="فَعْل">سَمْحٌ</W> قلبها <W id="hasan" wazn="فَعَل">حَسَنٌ</W> صنعها. وحين أيّدت
-            بفتواها الإمام بلعرب بن سلطان بدت <W id="shuja" wazn="فُعَالَة">شُجَاعَةً</W> في قول ما تراه حقًّا.
-            وعاشت <W id="bayda" wazn="فَعْلَاء">بَيْضَاءَ</W> السيرة، <W id="hulwa" wazn="فُعْلَة">حُلْوَةَ</W>{' '}
-            الحديث مع تلاميذها، وبقي ذكرها <W id="tayyib" wazn="فَيْعِل">طَيِّبَ</W> الأثر في بهلا.
+            <W id="faqiha" wazn="فَعِيلَة">فقيهة</W> تسأل فتفتي. كانت <W id="zama" wazn="فَعْلَى">ظمأى</W>{' '}
+            إلى العلم لا ترتوي منه، <W id="fatina" wazn="فَعِلَة">فطنة</W> في فهم المسائل،{' '}
+            <W id="razina" wazn="فَعِيلَة">رزينة</W> الرأي إذا حكمت. وقفت مكتبتها على طلبة العلم، فكانت{' '}
+            <W id="samh" wazn="فَعْل">سمحا</W> قلبها <W id="hasan" wazn="فَعَل">حسنا</W> صنعها. وحين أيدت
+            بفتواها الإمام بلعرب بن سلطان بدت <W id="shuja" wazn="فُعَالَة">شجاعة</W> في قول ما تراه حقا.
+            وعاشت <W id="bayda" wazn="فَعْلَاء">بيضاء</W> السيرة، <W id="hulwa" wazn="فُعْلَة">حلوة</W>{' '}
+            الحديث مع تلاميذها، وبقي ذكرها <W id="tayyib" wazn="فَيْعِل">طيب</W> الأثر في بهلا.
           </div>
           <div style={{ display: 'flex', gap: 24, marginTop: 30 }}>
             <Btn onClick={() => setShown(new Set(ALL))}>أظهري كل الإجابات</Btn>
@@ -418,8 +441,8 @@ const Answers: Page = () => {
             <Card word="ظَمْأَى" base="ظَمْآن" wazn="فَعْلَى" />
             <Card word="فَطِنَة" base="فَطِن" wazn="فَعِلَة" />
             <Card word="رَزِينَة" base="رَزِين" wazn="فَعِيلَة" />
-            <Card word="سَمْحٌ" base="سَمُحَ" wazn="فَعْل" />
-            <Card word="حَسَنٌ" base="حَسُنَ" wazn="فَعَل" />
+            <Card word="سَمْحًا" base="سَمُحَ" wazn="فَعْل" />
+            <Card word="حَسَنًا" base="حَسُنَ" wazn="فَعَل" />
             <Card word="شُجَاعَة" base="شُجَاع" wazn="فُعَالَة" />
             <Card word="بَيْضَاء" base="أَبْيَض" wazn="فَعْلَاء" />
             <Card word="حُلْوَة" base="حُلْو" wazn="فُعْلَة" />

@@ -11,7 +11,7 @@ export const design: DesignSystem = {
     display: '"Aref Ruqaa", "Amiri", serif',
     body: '"Tajawal", "Segoe UI", Tahoma, sans-serif',
   },
-  typeScale: { hero: 150, body: 36 },
+  typeScale: { hero: 200, body: 48 },
   radius: 20,
 };
 
@@ -140,12 +140,12 @@ function Btn({ onClick, children, color = C.green }: { onClick: () => void; chil
       style={{
         fontFamily: 'var(--osd-font-body)',
         fontWeight: 800,
-        fontSize: 30,
+        fontSize: 40,
         color: '#fff',
         background: color,
         border: 'none',
         borderRadius: 999,
-        padding: '14px 40px',
+        padding: '16px 48px',
         boxShadow: '0 6px 0 rgba(0,0,0,.18)',
       }}
     >
@@ -158,8 +158,8 @@ function Btn({ onClick, children, color = C.green }: { onClick: () => void; chil
 const Cover: Page = () => (
   <Frame>
     <Aisha src={aBase} height={900} style={{ left: 170, bottom: 60 }} />
-    <div style={{ position: 'absolute', right: 160, top: 250, width: 1050 }}>
-      <div style={{ fontSize: 34, fontWeight: 800, color: C.red, letterSpacing: 2 }}>نشاط تفاعلي · الصرف</div>
+    <div style={{ position: 'absolute', right: 140, top: 200, width: 1150 }}>
+      <div style={{ fontSize: 46, fontWeight: 800, color: C.red, letterSpacing: 2 }}>نشاط تفاعلي · الصرف</div>
       <h1
         style={{
           fontFamily: 'var(--osd-font-display)',
@@ -172,10 +172,10 @@ const Cover: Page = () => (
         الصفة المشبّهة
       </h1>
       <div style={{ width: 260, height: 6, background: C.gold, borderRadius: 3, margin: '10px 0 40px' }} />
-      <p style={{ fontSize: 44, lineHeight: 1.6, margin: 0, color: C.soft, fontWeight: 500 }}>
+      <p style={{ fontSize: 58, lineHeight: 1.5, margin: 0, color: C.soft, fontWeight: 500 }}>
         مع العالمة العُمانية
         <br />
-        <b style={{ color: 'var(--osd-text)', fontFamily: NASKH, fontSize: 56 }}>عائشة بنت راشد الريامية</b>
+        <b style={{ color: 'var(--osd-text)', fontFamily: NASKH, fontSize: 76 }}>عائشة بنت راشد الريامية</b>
       </p>
     </div>
   </Frame>
@@ -188,20 +188,20 @@ const Intro: Page = () => (
     <div
       style={{
         position: 'absolute',
-        right: 150,
-        top: 170,
-        width: 1080,
+        right: 110,
+        top: 70,
+        width: 1200,
         background: C.card,
         border: `3px solid ${C.edge}`,
         borderRadius: 36,
-        padding: '48px 60px',
+        padding: '36px 56px',
         boxShadow: '0 14px 30px rgba(80,50,20,.12)',
       }}
     >
-      <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 64, color: C.red, marginBottom: 20 }}>
+      <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 84, color: C.red, marginBottom: 10 }}>
         مرحبًا يا طالباتي!
       </div>
-      <p style={{ fontSize: 38, lineHeight: 1.75, margin: 0 }}>
+      <p style={{ fontSize: 50, lineHeight: 1.6, margin: 0 }}>
         أنا <b>عائشة بنت راشد الريامية</b>، فقيهة من <b>بهلا</b>، عشتُ بين القرنين الحادي عشر والثاني عشر
         الهجريين. سأحكي لكنّ سيرتي في فقرة قصيرة، وفيها صفاتٌ مشبّهة مخبّأة!
       </p>
@@ -209,20 +209,20 @@ const Intro: Page = () => (
     <div
       style={{
         position: 'absolute',
-        right: 150,
-        top: 620,
-        width: 1080,
+        right: 110,
+        bottom: 70,
+        width: 1200,
         background: C.green,
         color: '#fff',
         borderRadius: 28,
-        padding: '36px 56px',
+        padding: '30px 56px',
       }}
     >
-      <div style={{ fontSize: 30, fontWeight: 800, opacity: 0.85, marginBottom: 10 }}>المطلوب</div>
-      <div style={{ fontSize: 44, fontWeight: 800, lineHeight: 1.5 }}>
+      <div style={{ fontSize: 40, fontWeight: 800, opacity: 0.85, marginBottom: 6 }}>المطلوب</div>
+      <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.4 }}>
         استخرجي الصفة المشبّهة، ثم اكتبي وزنها.
       </div>
-      <div style={{ fontSize: 30, marginTop: 14, opacity: 0.9 }}>اضغطي على الكلمة لتظهر الإجابة.</div>
+      <div style={{ fontSize: 42, marginTop: 10, opacity: 0.9 }}>اضغطي على الكلمة لتظهر الإجابة.</div>
     </div>
   </Frame>
 );
@@ -263,7 +263,7 @@ function W({ id, children, wazn }: { id: string; children: ReactNode; wazn: stri
             verticalAlign: 'middle',
             marginInlineStart: 10,
             whiteSpace: 'nowrap',
-            fontSize: 32,
+            fontSize: 40,
             lineHeight: 1.3,
             fontFamily: NASKH,
             fontWeight: 700,
@@ -310,14 +310,20 @@ const Paragraph: Page = () => {
   return (
     <Frame>
       <Found.Provider value={{ shown, toggle }}>
-        <div style={{ position: 'absolute', right: 130, top: 70, left: 470 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 28 }}>
-            <h2 style={{ fontFamily: 'var(--osd-font-display)', fontSize: 66, color: C.green, margin: 0 }}>
+        <div style={{ position: 'absolute', right: 80, top: 50, left: 80 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 28, height: 120 }}>
+            <h2 style={{ fontFamily: 'var(--osd-font-display)', fontSize: 80, color: C.green, margin: 0 }}>
               استخرجي الصفة المشبّهة ووزنها
             </h2>
-            <span style={{ fontSize: 30, fontWeight: 800, color: C.red }}>
+            <span style={{ fontSize: 48, fontWeight: 800, color: C.red }}>
               {shown.size.toLocaleString('ar-EG')} / {ALL.length.toLocaleString('ar-EG')}
             </span>
+            <div style={{ flex: 1 }} />
+            <Btn onClick={() => setShown(new Set(ALL))}>أظهري الكل</Btn>
+            <Btn color={C.soft} onClick={() => setShown(new Set())}>
+              إخفاء
+            </Btn>
+            <div style={{ width: 150 }} />
           </div>
           <div
             data-osd-interactive
@@ -325,14 +331,14 @@ const Paragraph: Page = () => {
             style={{
               cursor: 'default',
               userSelect: 'none',
-              marginTop: 26,
+              marginTop: 14,
               background: C.card,
               border: `3px solid ${C.edge}`,
               borderRadius: 30,
-              padding: '26px 48px 44px',
+              padding: '14px 44px 24px',
               fontFamily: NASKH,
-              fontSize: 40,
-              lineHeight: 2.35,
+              fontSize: 56,
+              lineHeight: 1.85,
               textAlign: 'justify',
               boxShadow: '0 14px 30px rgba(80,50,20,.10)',
             }}
@@ -346,35 +352,9 @@ const Paragraph: Page = () => {
             وعاشت <W id="bayda" wazn="فَعْلَاء">بيضاء</W> السيرة، <W id="hulwa" wazn="فُعْلَة">حلوة</W>{' '}
             الحديث مع تلاميذها، وبقي ذكرها <W id="tayyib" wazn="فَيْعِل">طيب</W> الأثر في بهلا.
           </div>
-          <div style={{ display: 'flex', gap: 24, marginTop: 30 }}>
-            <Btn onClick={() => setShown(new Set(ALL))}>أظهري كل الإجابات</Btn>
-            <Btn color={C.soft} onClick={() => setShown(new Set())}>
-              إخفاء
-            </Btn>
-          </div>
         </div>
       </Found.Provider>
-      <Aisha src={done ? aClap : aThink} height={760} style={{ left: 40, bottom: 60 }} />
-      <div
-        className="sm-in"
-        key={done ? 'd' : 't'}
-        style={{
-          position: 'absolute',
-          left: 70,
-          top: 90,
-          width: 340,
-          background: '#fff',
-          border: `3px solid ${done ? C.green : C.edge}`,
-          borderRadius: 26,
-          padding: '18px 24px',
-          fontSize: 30,
-          fontWeight: 700,
-          lineHeight: 1.45,
-          color: done ? C.green : C.soft,
-        }}
-      >
-        {done ? 'أحسنتنّ! عشر صفاتٍ مشبّهة 🌟' : 'ابحثي عن الصفات… كم صفةً في سيرتي؟'}
-      </div>
+      <Aisha src={done ? aClap : aThink} height={200} style={{ left: 70, top: 22 }} />
     </Frame>
   );
 };
@@ -392,7 +372,7 @@ function Card({ word, base, wazn }: { word: string; base: string; wazn: string }
       role="button"
       onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
       style={{
-        height: 250,
+        height: 330,
         borderRadius: 26,
         border: `3px solid ${on ? C.green : C.edge}`,
         background: on ? '#EAF4EE' : C.card,
@@ -404,14 +384,14 @@ function Card({ word, base, wazn }: { word: string; base: string; wazn: string }
         boxShadow: '0 8px 18px rgba(80,50,20,.10)',
       }}
     >
-      <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 56, color: C.red }}>{word}</div>
+      <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 80, color: C.red }}>{word}</div>
       {on ? (
         <div className="sm-in" style={{ textAlign: 'center' }}>
-          <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 44, color: C.green }}>{wazn}</div>
-          <div style={{ fontSize: 24, color: C.soft }}>من: {base}</div>
+          <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 64, color: C.green }}>{wazn}</div>
+          <div style={{ fontSize: 34, color: C.soft }}>من: {base}</div>
         </div>
       ) : (
-        <div style={{ fontSize: 26, color: C.soft, fontWeight: 700 }}>اضغطي لمعرفة الوزن</div>
+        <div style={{ fontSize: 34, color: C.soft, fontWeight: 700 }}>اضغطي لمعرفة الوزن</div>
       )}
     </div>
   );
@@ -422,9 +402,9 @@ const Answers: Page = () => {
   return (
     <Frame>
       <Found.Provider value={{ shown: new Set(all ? ['all'] : []), toggle: () => {} }}>
-        <div style={{ position: 'absolute', right: 130, left: 130, top: 80 }}>
+        <div style={{ position: 'absolute', right: 90, left: 90, top: 60 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h2 style={{ fontFamily: 'var(--osd-font-display)', fontSize: 70, color: C.green, margin: 0 }}>
+            <h2 style={{ fontFamily: 'var(--osd-font-display)', fontSize: 90, color: C.green, margin: 0 }}>
               تحقّقي من إجاباتك
             </h2>
             <Btn onClick={() => setAll(!all)}>{all ? 'إخفاء الكل' : 'أظهري الكل'}</Btn>
@@ -433,8 +413,8 @@ const Answers: Page = () => {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(5, 1fr)',
-              gap: 32,
-              marginTop: 60,
+              gap: 28,
+              marginTop: 36,
             }}
           >
             <Card word="فَقِيهَة" base="فَقِيه" wazn="فَعِيلَة" />
@@ -448,7 +428,7 @@ const Answers: Page = () => {
             <Card word="حُلْوَة" base="حُلْو" wazn="فُعْلَة" />
             <Card word="طَيِّب" base="طَابَ" wazn="فَيْعِل" />
           </div>
-          <div style={{ marginTop: 56, fontSize: 32, color: C.soft, textAlign: 'center' }}>
+          <div style={{ marginTop: 36, fontSize: 42, color: C.soft, textAlign: 'center' }}>
             الصفة المشبّهة تدلّ على صفةٍ <b style={{ color: C.red }}>ثابتة</b> في صاحبها، وتُصاغ غالبًا من الفعل
             الثلاثي اللازم.
           </div>
@@ -462,11 +442,11 @@ const Answers: Page = () => {
 const Closing: Page = () => (
   <Frame>
     <Aisha src={aClap} height={880} style={{ left: 200, bottom: 70 }} />
-    <div style={{ position: 'absolute', right: 180, top: 300, width: 1000 }}>
+    <div style={{ position: 'absolute', right: 140, top: 230, width: 1150 }}>
       <h1
         style={{
           fontFamily: 'var(--osd-font-display)',
-          fontSize: 150,
+          fontSize: 210,
           color: C.red,
           margin: 0,
           lineHeight: 1.25,
@@ -474,7 +454,7 @@ const Closing: Page = () => (
       >
         أحسنتنّ!
       </h1>
-      <p style={{ fontSize: 44, lineHeight: 1.7, color: C.soft, marginTop: 30 }}>
+      <p style={{ fontSize: 62, lineHeight: 1.6, color: C.soft, marginTop: 20 }}>
         كونيّ مثل عائشة الريامية:
         <br />
         <b style={{ color: C.green }}>ظَمْأَى إلى العلم، فَطِنَةً، طَيِّبَةَ الأثر.</b>
